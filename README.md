@@ -25,9 +25,3 @@ As principais tecnologias utilizadas no desenvolvimento do projeto são:
 -  
 -   
 - 
-
----
-
-
-# Inicie o servidor local
-npm start
