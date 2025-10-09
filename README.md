@@ -21,7 +21,7 @@ O portal tem como foco **aumentar a fidelidade** e **o engajamento** do público
 As principais tecnologias utilizadas no desenvolvimento do projeto são:
 
 - **Python e django** para desenvolvimento do codigo
-- 
+- **HTML e CSS** para desenvolvimento dos templates
 -  
 -   
 - 
