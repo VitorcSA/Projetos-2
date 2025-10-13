@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="Login">Digite um Login:</label>
+        <input type="text" name="username" placeholder="Nome de usuario">
+
+        <label for="Senha">Digite uma Senha:</label>
+        <input type="password" name="password" placeholder="Senha">
+
+        <button type="submit" class="entry_button">enviar</button>
+    </form>
+
+    <p>{{ error }}</p>
+    
+</body>
+</html>
