@@ -1,0 +1,104 @@
+Histórias de Usuário: 
+
+História 1: Como usuário eu quero ler reportagens verticais rápidas para não perder tempo me atualizando das notícias.
+Cenário BDD 1: Usuário não precisará estar logado
+Dado que o usuário acessa a seção de notícias rápidas
+Quando ele seleciona uma reportagem vertical
+Então a notícia deve ser exibida em formato reduzido, com leitura prevista de no máximo 2 minutos
+Cenário BDD 2: Usuário está logado
+Dado que o usuário esteja logado com sua conta no site
+Quando o usuário acessar a aba de notícias pela primeira vez, um catálogo de personalização de conteúdo aparecerá, o usuário pode escolher 5 temas de sua preferência.
+Então o sistema exibirá mais notícias com as preferências escolhidas pelo usuário
+
+História 2: Como usuário quero ouvir podcasts de notícias para me entreter enquanto me desloco para o trabalho.
+Cenário BDD 1: o Usuário não vai precisar estar logado
+Dado que o usuário acessa a aba de podcasts no portal
+Quando ele clica em um episódio de notícia
+Então o áudio deve ser reproduzido imediatamente
+Cenário BDD 2: Usuário está logado
+Dado que o usuário esteja logado e acesse a aba de podcasts
+Quando o usuário clica nos episódios de notícias
+Então irão aparecer opções de salvar o episódio numa playlist de notícias, para o usuário acessar quando quiser. 
+
+História 3: Como usuário eu quero definir meus tópicos de interesse ao logar no portal para ver apenas notícias que me interessam
+Cenário BDD 1: Só acontece quando o usuário estiver logado
+Dado que o usuário faz login no portal
+Quando ele seleciona seus tópicos de interesse
+Então o feed deve exibir prioritariamente notícias desses tópicos
+
+Cenário BDD 2: Usuário não possui login
+Dado que o usuário não fez login no portal
+Quando ele quer selecionar seus tópicos de interesse
+Então não aparecerá a possibilidade de selecionar e, terá uma mensagem de redirecionamento para página de login
+
+
+História 4: Como jornalista eu quero poder colocar tags ao publicar uma notícia para ela ser postada junto a outras notícias do mesmo nicho
+Cenário BDD 1: Vou precisar estar logado E como funcionário do jornal
+Dado que o jornalista está criando uma nova notícia no sistema
+Quando ele adiciona tags relacionadas ao conteúdo
+Então a notícia deve ser publicada junto a outras com as mesmas tags
+Cenário BDD 2: Estou logado, mas não trabalho no jornal
+Dado que o usuário queira adicionar alguma tag a notícia
+Quando ele não consegue adicionar tags relacionadas ao conteúdo
+Então o usuário não consegue alterar as tags
+
+Cenário BDD 3: Não estou logado e não trabalho no jornal
+Dado que o usuário queira adicionar alguma tag a notícia
+Quando ele não consegue adicionar tags relacionadas ao conteúdo
+Então o usuário não consegue alterar as tags
+História 5: Como programador eu quero poder acessar a localização do usuário para direcionar notícias de sua região.
+Cenário BDD 1: Usuário permite ver a localização (sem login necessário)
+Dado que o usuário concede permissão de localização
+Quando o sistema identifica sua região
+Então o feed deve exibir notícias locais relacionadas à localização detectada
+Cenário BDD 2: Usuário não permite ver a localização
+Dado que o usuário não concede permissão de localização
+Quando o sistema não identificar sua localização
+Então o feed exibirá notícias de diversas localizações do Brasil 
+
+História 6: Como usuário, quero marcar se uma notícia foi relevante ou não para mim
+Cenário BDD 1: Usuário com login
+Dado que o usuário lê uma notícia
+Quando ele marca como “relevante” ou “não relevante”
+Então o sistema deve registrar esse feedback
+Cenário BDD 2: Usuário com login + ‘’não relevante’’
+Dado que o usuário marque a notícia como não relevante
+Quando ele marcar a notícia como “não relevante”
+Então o sistema irá parar de recomendar notícias com as palavras chaves da notícia
+Cenário BDD 3: Usuário sem login
+Dado que o usuário lê uma notícia
+Quando ele não consegue marcar como “relevante” ou “não relevante” sem login
+Então o sistema não permite marcar como relevante, pois não consegue registrar
+
+História 7: Como usuário, quero receber notificações push apenas dos tópicos que escolhi
+Cenário BDD 1: Quando o usuário selecionou seus tópicos de interesse após o login
+Dado que o usuário configurou tópicos de interesse no sistema
+Quando uma notícia nova é publicada nesses tópicos
+Então ele deve receber uma notificação push
+Cenário  BDD 2: Usuário não forneceu os tópicos de seu interesse após o login
+Dado que o usuário não tem tópicos de interesse no site
+Quando uma notícia nova é publicada
+Então ele deve receber uma notificação relacionada as últimas notícias lidas
+Cenário  BDD 3: Usuário não tem login
+Dado que o usuário não tem tópicos de interesse no site
+Quando o usuário tenta registrar seus tópicos relevantes
+Então ele não conseguirá registrar os dados.
+
+História 8: Como usuário, quero fazer login.
+Cenário BDD 1: Login incorreto
+Dado que o usuário tem uma conta
+Quando informar um login incorreto
+Então o sistema deve informar um erro
+Cenário  BDD 2: Login bem sucedido
+Dado que o usuário tem uma conta
+Quando o usuário informar corretamente o login e a senha 
+Então, loga em sua conta
+História 9: Como usuário, gostaria de redefinir minha senha.
+Cenário BDD 1: email incorreto.
+Dado que o usuário tem uma conta
+Quando informar um email não conectado a nenhuma conta,
+Então o sistema não deve informar que o email não existe por questões de segurança, porém nada acontece.
+Cenário  BDD 2: redefinição correta.
+Dado que o usuário tem uma conta
+Quando o usuário informar um email conectado uma conta e redefinir pelo seu email.
+Então, sua senha será redefinida.
