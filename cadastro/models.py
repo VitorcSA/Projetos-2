@@ -14,6 +14,14 @@ class Perfil(AbstractUser):
         verbose_name_plural = ("users")
         db_table = "users"
 
+
+    Preferencias = models.ManyToManyField(
+        Preferencias, 
+        blank=True, 
+        related_name="users",
+        verbose_name="Tópicos de Interesse"
+    )
+
     groups = models.ManyToManyField(
         'auth.Group',
         verbose_name='groups',
@@ -22,6 +30,7 @@ class Perfil(AbstractUser):
         related_name="perfil_set",  
         related_query_name="perfil",
     )
+
     user_permissions = models.ManyToManyField(
         'auth.Permission',
         verbose_name='user permissions',
@@ -37,3 +46,9 @@ class Perfil(AbstractUser):
     def get_absolute_url(self):
         return reverse("Perfil_detail", kwargs={"pk": self.pk})
 
+
+class Preferencias(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Preferências")
+
+    def __str__(self):
+        return self.name
