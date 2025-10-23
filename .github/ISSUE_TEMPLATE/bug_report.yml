@@ -1,17 +1,20 @@
 name: Bug Report
 description: Use este template para relatar um erro encontrado no sistema.
+title: "[BUG] "
 labels: bug
+assignees: 
 
-fields:
-  - name: Descrição do bug
-    type: textarea
-    required: true
-  - name: Passos para reproduzir
-    type: textarea
-    required: true
-  - name: Comportamento esperado
-    type: textarea
-    required: true
-  - name: Captura de tela (opcional)
-    type: input
-    required: false
+body: |
+  **Descrição do bug**
+  Descreva o problema encontrado.
+
+  **Passos para reproduzir**
+  1. Vá para '...'
+  2. Clique em '...'
+  3. Veja o erro
+
+  **Comportamento esperado**
+  O que você esperava que acontecesse?
+
+  **Captura de tela (opcional)**
+  Se aplicável, adicione screenshots para ajudar a explicar o problema.
