@@ -25,3 +25,5 @@ As principais tecnologias utilizadas no desenvolvimento do projeto são:
 -  
 -   
 - 
+## Link do Deploy:
+[Site](https://projetos-2-2j9f.onrender.com "Site")
