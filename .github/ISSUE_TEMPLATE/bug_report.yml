@@ -1,0 +1,17 @@
+name: Bug Report
+description: Use este template para relatar um erro encontrado no sistema.
+labels: bug
+
+fields:
+  - name: Descrição do bug
+    type: textarea
+    required: true
+  - name: Passos para reproduzir
+    type: textarea
+    required: true
+  - name: Comportamento esperado
+    type: textarea
+    required: true
+  - name: Captura de tela (opcional)
+    type: input
+    required: false
