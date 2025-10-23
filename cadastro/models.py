@@ -2,7 +2,18 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+class Preferencias(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Preferências")
+
+    def __str__(self):
+        return self.name
+
+class Preferencias(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Preferências")
+
+    def __str__(self):
+        return self.name
+
 class Perfil(AbstractUser):
 
     @property
@@ -45,10 +56,3 @@ class Perfil(AbstractUser):
     
     def get_absolute_url(self):
         return reverse("Perfil_detail", kwargs={"pk": self.pk})
-
-
-class Preferencias(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="Preferências")
-
-    def __str__(self):
-        return self.name
