@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-vs(yevm7k@najivs3r%lxz-*y1p(ov54)gyftq8h^s8-^yycb0
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'athenas-agb9hwgzb2cucacc.brazilsouth-01.azurewebsites.net',
     'projetos-2-2j9f.onrender.com',
     '127.0.0.1',
     ]
