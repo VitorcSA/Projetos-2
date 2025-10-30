@@ -2,9 +2,13 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate
+from .models import *
 
 def home_page(request):
-    return render(request, "athena/home.html")
+
+    user = request.user
+
+    return render(request, "athena/home.html",{'usuario': user})
 
 def loginPage(request):
     context = {}
@@ -34,14 +38,40 @@ def registerPage(request):
 
         if not name or not email or not password:
             context['error'] = "preencha todos os campos"
+
             return render(request, "athena/register.html",context)
         elif User.objects.filter(username=name).exists():
             context['error'] = "um usuario com esse nome ja existe"
+
             return render(request, "athena/register.html",context)
-        
-        User.objects.create(username = name,email = email, password = password)
+    
+        user = User.objects.create(username = name,email = email, password = password)
+        Perfil.objects.create(user = user)
+
         return redirect('login')
     
     return render(request, "athena/register.html",context)
+
+def UserAccountPage(request,usuario_id=None):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    user = request.user
+    perfil = user.perfil
+
+    if usuario_id is None or usuario_id != user.id:
+        return redirect('UserAccount',usuario_id=user.id)
+
+    if request.method == 'POST':
+        selectedTagsIds = request.POST.getlist('tags')
+        selectedTags = Tag.objects.filter(id__in=selectedTagsIds)
+
+        perfil.tags.set(selectedTags)
+
+        return redirect('UserAccount',user.id)
+
+    tags = Tag.objects.all()
+    return render(request, "athena/UserAccount.html",{'usuario': user,'tags':tags})
+
 
 # Create your views here.

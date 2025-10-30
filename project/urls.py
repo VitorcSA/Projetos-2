@@ -26,5 +26,7 @@ urlpatterns = [
 
     path('login/',views.loginPage,name='login'),
 
-    path('register/',views.registerPage,name='register')
+    path('register/',views.registerPage,name='register'),
+
+    path('User/<int:usuario_id>/',views.UserAccountPage,name='UserAccount'),
 ]
