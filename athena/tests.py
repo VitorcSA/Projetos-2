@@ -20,7 +20,11 @@ class TesteE2E(LiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         options = Options()
-        options.add_argument('--disable-infobars')
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')        
+        options.add_argument("--disable-infobars")
+        options.add_argument("--incognito")
 
         service = Service(ChromeDriverManager().install())
         cls.browser = webdriver.Chrome(service=service,options=options)
@@ -49,7 +53,7 @@ class TesteE2E(LiveServerTestCase):
         passwordInput.send_keys(Keys.RETURN)
 
         WebDriverWait(self.browser, 10).until(
-            expected_conditions.presence_of_element_located(By.NAME,'user')
+            expected_conditions.presence_of_element_located((By.NAME,'user'))
         )
 
         return user
@@ -102,8 +106,8 @@ class TesteE2E(LiveServerTestCase):
     def test_tags(self):
         user = self.login()
 
-        futebolTag = Tag.objects.get(nome='Futebol')
-        politicaTag = Tag.objects.get(nome='Politica')
+        futebolTag = Tag.objects.create(nome='Futebol')
+        politicaTag = Tag.objects.create(nome='Politica')
 
         button = self.browser.find_element(By.NAME,"user")
         button.click()
@@ -112,8 +116,31 @@ class TesteE2E(LiveServerTestCase):
             expected_conditions.url_contains('/user/')
         )
 
-        futebolButton = self.browser.find_element(By.VALUE,f'{ futebolTag.id }')
+        futebolButton = self.browser.find_element(By.CSS_SELECTOR,f'input[type="checkbox"][value="{ futebolTag.id }"]')
+        politicaButton = self.browser.find_element(By.CSS_SELECTOR,f'input[type="checkbox"][value="{ politicaTag.id }"]')
+        saveButton = self.browser.find_element(By.NAME,"save")
 
+        futebolButton.click()
+        politicaButton.click()
+        saveButton.click()
 
+        self.browser.get(f'{self.live_server_url}/')
+
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,'user'))
+        )
+
+        button = self.browser.find_element(By.NAME,"user")
+        button.click()
+
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.url_contains('/user/')
+        )
+
+        futebolButton = self.browser.find_element(By.CSS_SELECTOR,f'input[type="checkbox"][value="{ futebolTag.id }"]')
+        saveButton = self.browser.find_element(By.NAME,"save")
+
+        futebolButton.click()
+        saveButton.click()
 
 # Create your tests here.
