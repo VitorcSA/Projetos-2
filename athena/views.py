@@ -24,7 +24,7 @@ def loginPage(request):
 
             return redirect('home')
         else:
-            context['error'] = "Nome de usuario incorreto"
+            context['error'] = "Nome de usuario ou senha incorreto"
 
     return render(request, "athena/login.html", context)
 
@@ -45,7 +45,7 @@ def registerPage(request):
 
             return render(request, "athena/register.html",context)
     
-        user = User.objects.create(username = name,email = email, password = password)
+        user = User.objects.create_user(username = name,email = email, password = password)
         Perfil.objects.create(user = user)
 
         return redirect('login')

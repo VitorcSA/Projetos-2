@@ -9,7 +9,7 @@
 <body>
 
     {% if usuario.is_authenticated %}
-        <a href="{% url 'UserAccount' usuario.id %}" ><img src="https://placehold.co/120x120" alt="Imagem do usuario"></a>   
+        <a name="user" href="{% url 'UserAccount' usuario.id %}" ><img src="https://placehold.co/120x120" alt="Imagem do usuario"></a>   
     {% endif %}
     
 </body>

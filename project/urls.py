@@ -28,5 +28,5 @@ urlpatterns = [
 
     path('register/',views.registerPage,name='register'),
 
-    path('User/<int:usuario_id>/',views.UserAccountPage,name='UserAccount'),
+    path('user/<int:usuario_id>/',views.UserAccountPage,name='UserAccount'),
 ]
