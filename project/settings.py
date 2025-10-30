@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    
+    'https://athenas-agb9hwgzb2cucacc.brazilsouth-01.azurewebsites.net'    
 ]
 
 ROOT_URLCONF = 'project.urls'
