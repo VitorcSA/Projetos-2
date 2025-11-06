@@ -27,8 +27,11 @@ SECRET_KEY = 'django-insecure-vs(yevm7k@najivs3r%lxz-*y1p(ov54)gyftq8h^s8-^yycb0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'athenas-agb9hwgzb2cucacc.brazilsouth-01.azurewebsites.net',
+    'projetos-2-2j9f.onrender.com',
+    '127.0.0.1',
+    ]
 
 # Application definition
 
@@ -40,16 +43,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cadastro',
+    'ckeditor',
+    'perfil_jornalista',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://athenas-agb9hwgzb2cucacc.brazilsouth-01.azurewebsites.net'    
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -118,7 +129,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

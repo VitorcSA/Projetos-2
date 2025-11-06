@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="POST">
+        {% csrf_token %}
+
+        {% for tag in tags %}
+            <label>
+                <input type="checkbox" name="tags" value="{{ tag.id }}" 
+                {% if tag in usuario.perfil.tags.all %} checked {% endif %}>
+                {{ tag.nome }}
+            </label>
+        {% endfor %}
+
+        <button name="save" type="submit" class="entry_button">enviar</button>
+    </form>
+
+</body>
+</html>
