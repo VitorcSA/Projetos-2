@@ -21,6 +21,14 @@ from athena import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('tag/<slug:tag_slug>/', views.noticias_por_tag, name='noticias_por_tag'),
     
     path('', views.home_page,name='home'),
+
+    path('login/',views.loginPage,name='login'),
+
+    path('register/',views.registerPage,name='register'),
+
+    path('user/<int:usuario_id>/',views.UserAccountPage,name='UserAccount'),
 ]
